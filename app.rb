@@ -13,6 +13,11 @@ def perform
   player1.show_state
   player1.gets_damage(5)
   player1.show_state
+  player1 = Player.new("Josiane")
+  player2 = Player.new("José")
+  player1.attacks(player2)
+  player2.show_state
+  player1.show_state
 end
 
 binding.pry

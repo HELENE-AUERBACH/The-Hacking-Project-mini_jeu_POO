@@ -31,6 +31,16 @@ class Player
     end
   end
 
+  def attacks(another_player)
+    # Simule le fait que le joueur sur lequel la méthode est appelée attaque un autre joueur "another_player"
+    # en affichant combien de dommages ce joueur a fait subir à "another_player"
+    # et renvoie nil
+    puts "#{@name} attaque #{another_player.name}"
+    number_of_damage_suffered = compute_damage # Calcul des dommages que le joueur va faire subir à "another_player"
+    another_player.gets_damage(number_of_damage_suffered) # Le joueur fait baisser les points de vie de "another_player" de "number_of_damage_suffered" points
+    puts "il lui inflige #{number_of_damage_suffered} points de dommages"
+  end
+
   private # Toutes les méthodes définies ci-après sont privées : il est interdit de pouvoir les appeler en dehors du code de la classe (donc interdit même dans le "main" ici-même dans ce fichier)
 
   def check_name(name_to_save)
@@ -38,5 +48,10 @@ class Player
     # Si le nom est ok, ça renvoie TRUE, sinon ça renvoie FALSE.
     # On veut vérifier que le name_to_save n'est ni nil, ni une instance d'une autre classe que celle des String, ni une chaîne vide :
     !name_to_save.nil? && name_to_save.instance_of?(String) && !name_to_save.strip.empty?
+  end
+
+  def compute_damage
+    # Renvoie un chiffre tiré aléatoirement et compris entre 1 et 6
+    return rand(1..6)
   end
 end
