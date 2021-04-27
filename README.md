@@ -27,7 +27,7 @@ le joueur José a été tué !<BR>
 José a 0 points de vie<BR>
 => nil<BR>
 [2] pry(main)> player1 = Player.new("José")<BR>
-=> #<Player:0x00005571142ce928 @life_points=10, @name="José"><BR>
+=> #&lt;Player:0x00005571142ce928 @life_points=10, @name="José"&gt;<BR>
 [3] pry(main)> player1.gets_damage(5)<BR>
 => nil<BR>
 [4] pry(main)> player1.show_state<BR>
