@@ -45,7 +45,6 @@ José a 8 points de vie<BR>
 Josiane a 10 points de vie<BR>
 => nil<BR>
 [7] pry(main)> !!!<BR>
-=> #&lt;Player:0x00005571142ce928 @life_points=10, @name="José"&gt;<BR>
 </p>
 </div>
 </body>
