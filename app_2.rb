@@ -33,8 +33,10 @@ def menu(enemies)
   puts "s - chercher à se soigner\n"
   puts "attaquer un joueur en vue :"
   enemies.each_index { |bot_index|
-    print "#{bot_index} - "
-    enemies[bot_index].show_state
+    if enemies[bot_index].still_alive?
+      print "#{bot_index} - "
+      enemies[bot_index].show_state
+    end
   }
 end
 
@@ -49,7 +51,7 @@ def apply_choice(human, enemies)
     puts "#{human.search_health_pack}"
   else
     bot_index = choice.to_i
-    human.attacks(enemies[bot_index])
+    human.attacks(enemies[bot_index]) if enemies[bot_index].still_alive?
   end
 end
 
