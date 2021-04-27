@@ -15,6 +15,11 @@ class Player
     @life_points = 10
     # Un Joueur vient d'être créé (avec ou sans nom) avec 10 points de vie : on l'affiche "en brut" (ce doit être le comportement par défaut de la méthode new?)
   end # fin de la définition de ma méthode "initialize"
+  
+  def show_state
+    # Affiche l'état de l'objet Player sur laquelle elle est exécutée et renvoie nil
+    puts "#{@name} a #{@life_points} points de vie"
+  end
 
   private # Toutes les méthodes définies ci-après sont privées : il est interdit de pouvoir les appeler en dehors du code de la classe (donc interdit même dans le "main" ici-même dans ce fichier)
 
