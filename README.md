@@ -75,7 +75,7 @@ a - chercher une meilleure arme<BR>
 s - chercher à se soigner<BR>
 attaquer un joueur en vue :<BR>
 1 - José a 10 points de vie<BR>
-&gt; a<BR><BR>$
+&gt; a<BR>
 Tu as trouvé une arme de niveau 5<BR>
 Youhou ! elle est meilleure que ton arme actuelle : tu la prends.<BR>
 <BR>
