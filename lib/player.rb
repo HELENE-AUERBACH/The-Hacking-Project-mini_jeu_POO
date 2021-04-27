@@ -41,6 +41,11 @@ class Player
     puts "il lui inflige #{number_of_damage_suffered} points de dommages"
   end
 
+  def still_alive?
+    # Renvoie true si le Joueur sur lequel la méthode est appelée (qu'il soit humain ou qu'il soit un bot) est toujours en vie, false sinon
+    return @life_points > 0
+  end
+
   private # Toutes les méthodes définies ci-après sont privées : il est interdit de pouvoir les appeler en dehors du code de la classe (donc interdit même dans le "main" ici-même dans ce fichier)
 
   def check_name(name_to_save)
@@ -54,4 +59,66 @@ class Player
     # Renvoie un chiffre tiré aléatoirement et compris entre 1 et 6
     return rand(1..6)
   end
-end
+end # Fin du code de la classe Player
+
+class HumanPlayer < Player # HumanPlayer est une classe fille de la classe Player : elle hérite des attributs et des méthodes de la classe Player
+  # Classe qui modélise un Joueur humain (un Joueur qui n'est pas un Bot)
+  attr_accessor :weapon_level # niveau (Integer) de l'arme du HumanPlayer
+
+  def initialize(name_to_save)
+    super(name_to_save) # On fait appel au constructeur (à la méthode initialize) de la classe mère Player
+    @life_points = 100 # un Joueur humain dispose de 100 points de vie par défaut (au lieu de 10 pour un Bot)
+    @weapon_level = 1
+  end
+
+  def show_state
+    # Affiche l'état de l'objet HumanPlayer sur laquelle elle est exécutée et renvoie nil
+    puts "#{@name} a #{@life_points} points de vie et une arme de niveau #{@weapon_level}"
+  end
+
+  def search_weapon
+    # Simule la recherche d'une nouvelle arme, plus puissante (et dans ce cas, cette arme est associée
+    # au Joueur humain sur lequel la méthode est appelée), affiche un message et renvoie nil
+    dice = rand(1..6) # Lancement d'un "dé" dont le résultat sera compris entre 1 et 6
+    puts "Tu as trouvé une arme de niveau #{dice}"
+    if dice > @weapon_level
+      @weapon_level = dice
+      puts "Youhou ! elle est meilleure que ton arme actuelle : tu la prends."
+    else
+      puts "M@*#\$... elle n'est pas mieux que ton arme actuelle..."
+    end
+  end
+
+  def search_health_pack
+    # Simule la recherche d'un pack de points de vie afin de faire remonter le niveau de vie du Joueur humain sur lequel la méthode est appelée,
+    # mais pas au-delà de 100 points, et renvoie un message
+    life_points_max = 100
+    dice = rand(1..6) # Lancement d'un "dé" dont le résultat sera compris entre 1 et 6
+    case dice
+    when 1
+      "Tu n'as rien trouvé..."
+    when 2..5
+      limit_increase_for_life_points(50, life_points_max)
+    else
+      limit_increase_for_life_points(80, life_points_max)
+    end
+  end
+
+  private # Toutes les méthodes définies ci-après sont privées
+
+  def compute_damage
+    # Renvoie (par un return implicite) un chiffre tiré aléatoirement et compris entre [@weapon_level] et [6 x @weapon_level]
+    rand(1..6) * @weapon_level
+  end
+
+  def limit_increase_for_life_points(value_for_increase, value_max)
+    # Augmente le niveau de vie du Joueur humain sur lequel la méthode est appelée de "value_for_increase" points,
+    # mais sans élever ce niveau de vie au-delà de la valeur "value_max", et renvoie un message
+    @life_points = (@life_points + value_for_increase >= value_max ? value_max : @life_points + value_for_increase)
+    if value_for_increase == 50
+      "Bravo, tu as trouvé un pack de +50 points de vie !"
+    else
+      "Waow, tu as trouvé un pack de +80 points de vie !"
+    end
+  end
+end # Fin du code de la classe Player
