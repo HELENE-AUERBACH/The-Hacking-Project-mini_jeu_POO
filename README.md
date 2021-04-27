@@ -9,32 +9,37 @@
 <p>.../The_Hacking_Project/4-Semaine_Decouverte_de_la_POO/Jour_1/mini_jeu_POO$ ruby/app.rb<BR>
 Warning: the running version of Bundler (2.1.4) is older than the version that created the lockfile (2.2.16). We suggest you to upgrade to the version that created the lockfile by running `gem install bundler:2.2.16`.<BR>
 <BR>
-From: /media/lnha/Data/The_Hacking_Project/4-Semaine_Decouverte_de_la_POO/Jour_1/mini_jeu_POO/app.rb:14 :<BR>
+From: /media/lnha/Data/The_Hacking_Project/4-Semaine_Decouverte_de_la_POO/Jour_1/mini_jeu_POO/app.rb:18 :<BR>
 <BR>
-     9:   player1.name<BR>
-    10:   player1.life_points<BR>
-    11:   player1.show_state<BR>
-    12: end<BR>
-    13: <BR>
- => 14: binding.pry<BR>
-    15: <BR>
-    16: perform<BR>
+    13:   player1.show_state<BR>
+    14:   player1.gets_damage(5)<BR>
+    15:   player1.show_state<BR>
+    16: end<BR>
+    17: <BR>
+ => 18: binding.pry<BR>
+    19: <BR>
+    20: perform<BR>
 <BR>
-[1] pry(main)> player1.show_state<BR>
-NameError: undefined local variable or method `player1' for main:Object<BR>
-from (pry):1:in `<main>'<BR>
-[2] pry(main)> perform<BR>
+[1] pry(main)> perform<BR>
 José a 10 points de vie<BR>
+José a 5 points de vie<BR>
+le joueur José a été tué !<BR>
+José a 0 points de vie<BR>
 => nil<BR>
-[3] pry(main)> player1.show_state<BR>
-NameError: undefined local variable or method `player1' for main:Object<BR>
-from (pry):3:in `<main>'<BR>
-[4] pry(main)> player1 = Player.new("José")<BR>
-=> #<Player:0x00005561bc63e5e8 @life_points=10, @name="José"><BR>
-[5] pry(main)> player1.show_state<BR>
-José a 10 points de vie<BR>
+[2] pry(main)> player1 = Player.new("José")<BR>
+=> #<Player:0x00005571142ce928 @life_points=10, @name="José"><BR>
+[3] pry(main)> player1.gets_damage(5)<BR>
 => nil<BR>
-[6] pry(main)> !!!<BR>
+[4] pry(main)> player1.show_state<BR>
+José a 5 points de vie<BR>
+=> nil<BR>
+[5] pry(main)> player1.gets_damage(5)<BR>
+le joueur José a été tué !<BR>
+=> nil<BR>
+[6] pry(main)> player1.show_state<BR>
+José a 0 points de vie<BR>
+=> nil<BR>
+[7] pry(main)> !!!<BR>
 </p>
 </div>
 </body>

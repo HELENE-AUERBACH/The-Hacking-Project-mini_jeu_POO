@@ -9,6 +9,10 @@ def perform
   player1.name
   player1.life_points
   player1.show_state
+  player1.gets_damage(5)
+  player1.show_state
+  player1.gets_damage(5)
+  player1.show_state
 end
 
 binding.pry

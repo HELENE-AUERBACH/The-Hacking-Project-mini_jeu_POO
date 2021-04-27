@@ -21,6 +21,16 @@ class Player
     puts "#{@name} a #{@life_points} points de vie"
   end
 
+  def gets_damage(number_of_damage_suffered)
+    # Fait baisser le niveau de vie du joueur sur lequel la méthode est appelée
+    # du "number_of_damage_suffered" nombre (Integer) de dommages subits par ce même joueur,
+    # puis affiche un message si ce joueur a été tué, et renvoie nil dans tous les cas
+    @life_points -= number_of_damage_suffered
+    if @life_points <= 0
+      puts "le joueur #{@name} a été tué !"
+    end
+  end
+
   private # Toutes les méthodes définies ci-après sont privées : il est interdit de pouvoir les appeler en dehors du code de la classe (donc interdit même dans le "main" ici-même dans ce fichier)
 
   def check_name(name_to_save)
