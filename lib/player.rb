@@ -26,6 +26,7 @@ class Player
     # du "number_of_damage_suffered" nombre (Integer) de dommages subits par ce même joueur,
     # puis affiche un message si ce joueur a été tué, et renvoie nil dans tous les cas
     @life_points -= number_of_damage_suffered
+    puts "il lui inflige #{number_of_damage_suffered} points de dommages"
     if @life_points <= 0
       puts "le joueur #{@name} a été tué !"
     end
@@ -38,7 +39,6 @@ class Player
     puts "#{@name} attaque #{another_player.name}"
     number_of_damage_suffered = compute_damage # Calcul des dommages que le joueur va faire subir à "another_player"
     another_player.gets_damage(number_of_damage_suffered) # Le joueur fait baisser les points de vie de "another_player" de "number_of_damage_suffered" points
-    puts "il lui inflige #{number_of_damage_suffered} points de dommages"
   end
 
   def still_alive?
