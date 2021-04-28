@@ -73,7 +73,7 @@ def perform
       break
     end
     puts "\nLes autres joueurs t'attaquent !" if enemies.any? { |bot| bot.still_alive? }
-    enemies.each { |bot| bot.attacks(user) if bot.still_alive? }
+    enemies.each { |bot| bot.attacks(user) if (bot.still_alive? && user.still_alive?) }
   end
   puts "\nLa partie est finie"
   if user.still_alive?
